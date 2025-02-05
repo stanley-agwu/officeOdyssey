@@ -1,0 +1,111 @@
+@import 'styles/main';
+
+.Toastify {
+  &__toast-container {
+    width: 20rem;
+  }
+
+  &__toast {
+    border-radius: 0.5rem;
+    box-shadow: none;
+    padding: $space;
+  }
+
+  &__toast-body.toastbody {
+    font-family: $fontFamily;
+    padding: 0 $space 0 0;
+
+    .title {
+      font-weight: $fontWeightBold;
+      margin-bottom: calc($space/2);
+    }
+
+    .body {
+      font-weight: $baseFontWeight;
+      font-size: $fontSizeSmall;
+    }
+
+    .image-icon {
+      display: flex;
+      height: 2.25rem;
+      width: 2.25rem;
+      align-self: center;
+    }
+
+    .success {
+      path {
+        fill: $six-color-success-600;
+      }
+    }
+
+    .error {
+      stroke: $six-color-danger-900;
+    }
+
+    .information {
+      path {
+        fill: $six-color-web-rock-600;
+      }
+    }
+  }
+
+  &__close-button {
+    align-self: center;
+  }
+
+  &__toast-icon {
+    height: 2rem !important;
+    width: 2rem !important;
+  }
+
+  &__toast-theme--colored.Toastify__toast {
+    font-size: $fontSizeSmall;
+    &--success {
+      background: $toast-green-200;
+      color: $toast-green-600;
+
+      .Toastify__close-button {
+        align-self: center;
+        color: $toast-green-600;
+      }
+    }
+
+    &--error {
+      background: $toast-red-200;
+      color: $six-color-red;
+
+      .Toastify__close-button {
+        align-self: center;
+        color: $six-color-red;
+      }
+    }
+
+    &--info {
+      background-color: $six-color-web-rock-200;
+      color: $six-color-web-rock-500;
+
+      .Toastify__close-button {
+        align-self: center;
+        color: $six-color-web-rock-600;
+      }
+    }
+  }
+
+  &__progress-bar {
+    height: 0.25rem;
+  }
+
+  &__progress-bar-theme--colored.Toastify__progress-bar {
+    &--success {
+      background: $toast-green-600;
+    }
+
+    &--error {
+      background: $six-color-red;
+    }
+
+    &--info {
+      background: $six-color-web-rock-500;
+    }
+  }
+}

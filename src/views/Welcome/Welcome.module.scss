@@ -1,0 +1,41 @@
+@import 'styles/main';
+
+.welcome {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  color: $six-color-web-rock-800;
+}
+
+.container {
+  max-width: 30rem;
+  width: 100%;
+  margin: 2rem auto 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 10rem);
+}
+
+.welcomeText {
+  padding: $space-4 0;
+}
+
+.button {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  max-width: 20rem;
+
+  .submitButton {
+    width: 100%;
+    text-transform: uppercase;
+    align-self: center;
+    margin: 0 auto;
+    font-size: $fontSizeSmall;
+  }
+}
+

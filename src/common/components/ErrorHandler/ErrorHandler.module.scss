@@ -1,0 +1,16 @@
+@import 'styles/main';
+
+.errorHandler {
+  height: 100vh;
+  width: 100%;
+  @include flex-center;
+  flex-direction: column;
+  font-family: $fontFamily;
+  font-size: $baseFontSize;
+  gap: $space-3;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: $space-4;
+}

@@ -1,0 +1,15 @@
+@import 'styles/main';
+
+.header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.text {
+  font-size: 2rem;
+  font-weight: $fontWeightExtraBold;
+  line-height: 1;
+  color: $six-color-red;
+  align-self: center;
+}
