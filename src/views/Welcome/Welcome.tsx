@@ -23,7 +23,7 @@ const Welcome = () => {
           through the ornate doors, the echoes of past legends and the promise of restored financial
           magic fill the air. This is where your epic journey commences.
         </div>
-        <Box className={styles.button} sx={{ width: { xs: '100%', md: '20rem' } }}>
+        <Box className={styles.button}>
           <SixButton
             type={TypeEnum.secondary}
             size={SizeEnum.large}
