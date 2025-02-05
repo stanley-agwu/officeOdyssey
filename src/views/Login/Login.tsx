@@ -1,18 +1,15 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { SixInputCustomEvent } from '@six-group/ui-library';
 import { SixButton, SixInput } from '@six-group/ui-library-react/dist';
 
-import { logUserIn, logUserOut } from 'common/api/services/authSlice';
-import { useLoginMutation, useLogoutMutation } from 'common/api/services/userSlice';
-import { useAppDispatch, useAppSelector } from 'common/api/store/store';
+import { logUserIn } from 'common/api/services/authSlice';
+import { useLoginMutation } from 'common/api/services/userSlice';
+import { useAppDispatch } from 'common/api/store/store';
 import { showError } from 'common/components/Toast/showToastUtil';
-import { coreConfig } from 'common/core/config';
 import { IAvatarData, ILoginFormData, ILoginResponseData } from 'common/model';
 import { SizeEnum, TypeEnum } from 'common/utils/enums';
 
-import { resetReduxState } from 'common/utils/common';
 import { Box } from '@mui/material';
 import CharacterBox from 'common/components/CharacterBox/CharacterBox';
 import Avatar1 from 'common/assets/avatar-1.png';
@@ -35,17 +32,7 @@ function Login() {
     avatar: null,
   });
   const [avatar, setAvatar] = useState<IAvatarData>(initAvatar);
-  const [logout] = useLogoutMutation();
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
-
-  const userDetails = useAppSelector((state) => state.auth.userDetails);
-
-  const handleLogout = () => {
-    logout(coreConfig.endpoints.logout);
-    dispatch(logUserOut());
-    resetReduxState(dispatch);
-  };
 
   const [login, { isLoading, isError }] = useLoginMutation();
 

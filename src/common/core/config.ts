@@ -1,5 +1,6 @@
 interface CoreConfig {
   endpoints: {
+    baseUrl: string;
     signUp: string;
     login: string;
     logout: string;
@@ -18,6 +19,7 @@ interface CoreConfig {
 
 export const coreConfig: CoreConfig = {
   endpoints: {
+    baseUrl: 'https://officeodyssey:80',
     login: '/login',
     logout: '/logout',
     quest: 'quest',

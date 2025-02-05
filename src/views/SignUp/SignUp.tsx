@@ -4,15 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { SixInputCustomEvent } from '@six-group/ui-library';
 import { SixButton, SixInput } from '@six-group/ui-library-react/dist';
 
-import { logUserIn, logUserOut } from 'common/api/services/authSlice';
-import { useLoginMutation, useLogoutMutation } from 'common/api/services/userSlice';
-import { useAppDispatch, useAppSelector } from 'common/api/store/store';
-import { showError } from 'common/components/Toast/showToastUtil';
 import { coreConfig } from 'common/core/config';
-import { IAvatarData, ILoginFormData, ILoginResponseData } from 'common/model';
+import { IAvatarData, ILoginFormData } from 'common/model';
 import { SizeEnum, TypeEnum } from 'common/utils/enums';
 
-import { resetReduxState } from 'common/utils/common';
 import { Box } from '@mui/material';
 import CharacterBox from 'common/components/CharacterBox/CharacterBox';
 import Avatar1 from 'common/assets/avatar-1.png';
@@ -35,19 +30,7 @@ function SignUp() {
     avatar: null,
   });
   const [avatar, setAvatar] = useState<IAvatarData>(initAvatar);
-  const [logout] = useLogoutMutation();
   const navigate = useNavigate();
-  const dispatch = useAppDispatch();
-
-  const userDetails = useAppSelector((state) => state.auth.userDetails);
-
-  const handleLogout = () => {
-    logout(coreConfig.endpoints.logout);
-    dispatch(logUserOut());
-    resetReduxState(dispatch);
-  };
-
-  const [login, { isLoading, isError }] = useLoginMutation();
 
   const onFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -56,33 +39,6 @@ function SignUp() {
       return;
     }
     navigate(coreConfig.routes.general);
-
-    // try {
-    //   const response = (await login(formData)) as unknown as {
-    //     data: ILoginResponseData;
-    //     error?: {
-    //       data: { message: string };
-    //     };
-    //   };
-    //   if (response?.data) {
-    //     dispatch(
-    //       logUserIn({
-    //         ...response.data,
-    //       })
-    //     );
-    //   } else {
-    //     // setIsNoPermissionModalOpen(true);
-    //   }
-    //   if (response?.error) {
-    //     throw Error(response.error.data.message);
-    //   }
-    // } catch (error) {
-    //   showError(
-    //     'Login error',
-    //     (error as unknown as { data: { message: string } })?.data?.message ??
-    //       'An error occurred while trying to sign in'
-    //   );
-    // }
   };
 
   const charactersData = [
@@ -137,8 +93,6 @@ function SignUp() {
                 setFormData({ ...formData, userId: event.target.value.trim() })
               }
               placeholder="Enter user ID"
-              errorText={isError ? 'User ID is not correct' : undefined}
-              invalid={isError}
               aria-label="user ID"
             />
           </Box>
@@ -152,8 +106,6 @@ function SignUp() {
               }
               placeholder="Enter Nick name"
               type="text"
-              errorText={isError ? 'Nick name is not correct' : undefined}
-              invalid={isError}
               aria-label="Nickname"
             />
           </Box>
@@ -175,7 +127,6 @@ function SignUp() {
             <SixButton
               type={TypeEnum.secondary}
               size={SizeEnum.large}
-              disabled={isLoading}
               submit
               className={styles.submitButton}
               aria-label="Submit"

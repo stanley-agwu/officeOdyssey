@@ -3,7 +3,6 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { SixRoot, SixSpinner } from '@six-group/ui-library-react/dist';
 
-import { useAppSelector } from 'common/api/store/store';
 import Header from 'common/components/Header/Header';
 import { coreConfig } from 'common/core/config';
 import Login from 'views/Login/Login';
@@ -17,10 +16,6 @@ import General from 'views/General/General';
 import styles from './App.module.scss';
 
 function App() {
-  const { userDetails } = useAppSelector((state) => state.auth);
-  // const navigate = useNavigate();
-  // const permissions = useMemo(() => getUserPermissions(userDetails), [userDetails]);
-
   return (
     <SixRoot className={styles.container} padded={false}>
       <section className={styles.content} slot="main">
