@@ -55,33 +55,34 @@ function SignUp() {
     if (!formData.userId || !formData.nickname) {
       return;
     }
+    navigate(coreConfig.routes.general);
 
-    try {
-      const response = (await login(formData)) as unknown as {
-        data: ILoginResponseData;
-        error?: {
-          data: { message: string };
-        };
-      };
-      if (response?.data) {
-        dispatch(
-          logUserIn({
-            ...response.data,
-          })
-        );
-      } else {
-        // setIsNoPermissionModalOpen(true);
-      }
-      if (response?.error) {
-        throw Error(response.error.data.message);
-      }
-    } catch (error) {
-      showError(
-        'Login error',
-        (error as unknown as { data: { message: string } })?.data?.message ??
-          'An error occurred while trying to sign in'
-      );
-    }
+    // try {
+    //   const response = (await login(formData)) as unknown as {
+    //     data: ILoginResponseData;
+    //     error?: {
+    //       data: { message: string };
+    //     };
+    //   };
+    //   if (response?.data) {
+    //     dispatch(
+    //       logUserIn({
+    //         ...response.data,
+    //       })
+    //     );
+    //   } else {
+    //     // setIsNoPermissionModalOpen(true);
+    //   }
+    //   if (response?.error) {
+    //     throw Error(response.error.data.message);
+    //   }
+    // } catch (error) {
+    //   showError(
+    //     'Login error',
+    //     (error as unknown as { data: { message: string } })?.data?.message ??
+    //       'An error occurred while trying to sign in'
+    //   );
+    // }
   };
 
   const charactersData = [

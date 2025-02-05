@@ -12,6 +12,7 @@ interface CoreConfig {
     signUp: string;
     logout: string;
     welcome: string;
+    general: string;
   };
 }
 
@@ -28,5 +29,6 @@ export const coreConfig: CoreConfig = {
     signUp: '/signup',
     logout: '/logout',
     welcome: '/welcome',
+    general: '/general',
   },
 };

@@ -13,6 +13,7 @@ import PrivatedRoute from 'common/components/ProtectedRoute/ProtectedRoute';
 import NotFoundPage from 'common/components/NotFoundPage/NotFoundPage';
 import SignUp from 'views/SignUp/SignUp';
 import Welcome from 'views/Welcome/Welcome';
+import General from 'views/General/General';
 import styles from './App.module.scss';
 
 function App() {
@@ -28,9 +29,13 @@ function App() {
           <Routes>
             <Route path={coreConfig.routes.welcome} element={<Welcome />} />
             <Route path={coreConfig.routes.signUp} element={<SignUp />} />
+            <Route path={coreConfig.routes.signUp} element={<SignUp />} />
             <Route path={coreConfig.routes.login} element={<Login />} />
+            <Route path={coreConfig.routes.general} element={<General />} />
+            <Route index element={<Navigate to={coreConfig.routes.welcome} replace />} />
+            <Route path="*" element={<NotFoundPage />} />
             <Route path="" element={<PrivatedRoute />}>
-              <Route index element={<Navigate to={coreConfig.routes.quest} replace />} />
+              {/* <Route index element={<Navigate to={coreConfig.routes.quest} replace />} /> */}
               {/* <Route path={coreConfig.routes.quest} element={<Dashboard />} /> */}
               <Route path="*" element={<NotFoundPage />} />
             </Route>
